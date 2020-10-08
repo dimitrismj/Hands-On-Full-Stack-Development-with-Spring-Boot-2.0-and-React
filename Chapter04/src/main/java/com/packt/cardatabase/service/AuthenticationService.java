@@ -46,6 +46,7 @@ public class AuthenticationService {
       if (user != null) {
         return new UsernamePasswordAuthenticationToken(user, null, emptyList());
       }
+
     }
     return null;
   }

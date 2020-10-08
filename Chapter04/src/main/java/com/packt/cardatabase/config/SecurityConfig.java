@@ -1,5 +1,7 @@
-package com.packt.cardatabase;
+package com.packt.cardatabase.config;
 
+import com.packt.cardatabase.filter.AuthenticationFilter;
+import com.packt.cardatabase.filter.LoginFilter;
 import com.packt.cardatabase.service.UserDetailServiceImpl;
 import java.util.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.cors()
+    http
+        .csrf()
+        .disable()
+        .cors()
         .and()
         .authorizeRequests()
         .antMatchers(HttpMethod.POST, "/login")

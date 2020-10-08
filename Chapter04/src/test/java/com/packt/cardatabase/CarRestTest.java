@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -17,19 +16,29 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest
 @AutoConfigureMockMvc
 public class CarRestTest {
+
 	@Autowired
-    private MockMvc mockMvc;
-    
+	private MockMvc mockMvc;
+
 	@Test
 	public void testAuthentication() throws Exception {
 		// Testing authentication with correct credentials
-        this.mockMvc.perform(post("/login").content("{\"username\":\"admin\", \"password\":\"admin\"}")).
-        	andDo(print()).andExpect(status().isOk());
+		this.mockMvc.perform(post("/login").content("{\"username\":\"admin\", \"password\":\"admin\"}"))
+				.
+						andDo(print()).andExpect(status().isOk());
+
+
+	}
+
+	@Test
+	public void testWrongAuthentication() throws Exception {
 
 		// Testing authentication with wrong credentials
-        this.mockMvc.perform(post("/login").content("{\"username\":\"admin\", \"password\":\"wrongpwd\"}")).
-        	andDo(print()).andExpect(status().is4xxClientError());
-               
+		this.mockMvc
+				.perform(post("/login").content("{\"username\":\"admin\", \"password\":\"wrongpwd\"}")).
+				andDo(print()).andExpect(status().is4xxClientError());
+
 	}
+
 
 }

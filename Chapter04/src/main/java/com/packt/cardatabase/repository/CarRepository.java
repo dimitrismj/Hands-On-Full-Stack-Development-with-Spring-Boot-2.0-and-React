@@ -1,7 +1,7 @@
-package com.packt.cardatabase.domain;
+package com.packt.cardatabase.repository;
 
+import com.packt.cardatabase.domain.Car;
 import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

@@ -1,4 +1,4 @@
-package com.packt.cardatabase;
+package com.packt.cardatabase.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.packt.cardatabase.domain.AccountCredentials;
